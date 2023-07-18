@@ -1,6 +1,6 @@
-import { Controller, Get, Inject, Res } from '@nestjs/common';
+import { Controller, Get, Inject, Post, Req, Res } from '@nestjs/common';
 import { CarboneRepository } from '../shared/carbone.repository';
-import { Response } from 'express';
+import { Request, Response } from 'express';
 
 @Controller()
 export class CarboneController {
@@ -9,8 +9,19 @@ export class CarboneController {
   ) {}
 
   @Get()
-  async anotherLayout(@Res() res: Response) {
+  async index(@Res() res: Response) {
     const items = await this.repository.findAll();
     return res.render('carbone_catalogue', { items });
+  }
+
+  @Get('/comparator')
+  async comparator(@Res() res: Response) {
+    const items = await this.repository.findAll();
+    return res.render('carbone_comparator', { items });
+  }
+
+  @Post('/compare')
+  async compare(@Req() req: Request) {
+    const items = await this.repository.findAll();
   }
 }
