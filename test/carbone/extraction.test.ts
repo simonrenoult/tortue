@@ -8,21 +8,34 @@ import { CarboneRepositoryLoader } from '../../src/carbone/writes/carbone-reposi
 import { FeedCarboneRepositoryCommand } from '../../src/carbone/writes/feed-carbone-repository.command';
 
 describe('FeedCarboneRepositoryCommand', () => {
-  it('loads csv from fs, transforms it and load it in memory', async () => {
-    // Given
-    const carboneRepository = new InMemoryCarboneRepository();
-    const command = new FeedCarboneRepositoryCommand(
+  it('extracts, transforms and loads the appropriate number of elements', async () => {
+    const ctx = new TestContext();
+    ctx.givenAProperlyConfiguredCarboneRepositoryFeeder();
+    ctx.whenExecutingTheCarboneRepositoryFeeder();
+    await ctx.thenTheRepositoryContainsTheAppropriateNumberOfElements();
+  });
+});
+
+class TestContext {
+  private command: FeedCarboneRepositoryCommand;
+  private carboneRepository: InMemoryCarboneRepository;
+
+  givenAProperlyConfiguredCarboneRepositoryFeeder() {
+    this.carboneRepository = new InMemoryCarboneRepository();
+    this.command = new FeedCarboneRepositoryCommand(
       path.resolve(__dirname, './carbone_short.csv'),
       new CsvFileExtractor(),
       new StringToCarboneItemTransformator(),
-      new CarboneRepositoryLoader(carboneRepository),
+      new CarboneRepositoryLoader(this.carboneRepository),
     );
+  }
 
-    // When
-    command.onModuleInit();
+  whenExecutingTheCarboneRepositoryFeeder() {
+    this.command.onModuleInit();
+  }
 
-    // Then
-    const carboneItems = await carboneRepository.findAll();
+  async thenTheRepositoryContainsTheAppropriateNumberOfElements() {
+    const carboneItems = await this.carboneRepository.findAll();
     equal(carboneItems.length, 5);
-  });
-});
+  }
+}
