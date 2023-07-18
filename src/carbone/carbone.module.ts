@@ -7,6 +7,7 @@ import { StringToCarboneItemTransformator } from './writes/string-to-carbone-ite
 import { resolve } from 'path';
 import { CsvFileExtractor } from './writes/csv-file.extractor';
 import { CarboneRepositoryLoader } from './writes/carbone-repository.loader';
+import { FindDuplicatesCommand } from './writes/find-duplicates.command';
 
 @Module({
   imports: [],
@@ -49,6 +50,12 @@ import { CarboneRepositoryLoader } from './writes/carbone-repository.loader';
           transformator,
           loader,
         ),
+    },
+    {
+      provide: 'FindDuplicatesCommand',
+      inject: ['CarboneRepository'],
+      useFactory: (carboneRepository: CarboneRepository) =>
+        new FindDuplicatesCommand(carboneRepository),
     },
   ],
 })

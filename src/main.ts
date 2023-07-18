@@ -3,7 +3,7 @@ import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { CarboneModule } from './carbone/carbone.module';
 import { create } from 'express-handlebars';
-import { formatCarboneCatalogueItem } from './carbone/reads/handlebars-helpers';
+import { example } from './carbone/reads/handlebars-helpers';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(CarboneModule);
@@ -20,7 +20,7 @@ async function bootstrap() {
     defaultLayout: 'layout_main',
     layoutsDir: path.join(__dirname, 'shared/views', 'layouts'),
     partialsDir: path.join(__dirname, 'shared/views', 'partials'),
-    helpers: { formatCarboneCatalogueItem },
+    helpers: { example },
   });
 
   app.engine('hbs', hbs.engine);
