@@ -5,6 +5,7 @@
   "compilerOptions": {
     "deleteOutDir": true,
     "assets": ["**/*.hbs", "**/*.csv"],
-    "watchAssets": true
+    "watchAssets": true,
+    "manualRestart": true
   }
 }
