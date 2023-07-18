@@ -14,7 +14,7 @@ import { CarboneRepositoryLoader } from './writes/carbone-repository.loader';
   providers: [
     {
       provide: 'PATH_TO_CARBONE_CSV',
-      useValue: resolve(__dirname, '../assets', 'carbone.csv'),
+      useValue: resolve(__dirname, 'resources', 'carbone.csv'),
     },
     {
       provide: 'CarboneRepository',

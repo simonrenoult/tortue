@@ -8,20 +8,23 @@ import { formatCarboneCatalogueItem } from './carbone/reads/handlebars-helpers';
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(CarboneModule);
 
-  app.useStaticAssets(path.join(__dirname, '..', 'public'));
-  app.setBaseViewsDir(path.join(__dirname, '..', 'views'));
+  app.useStaticAssets(path.join(__dirname, 'shared/public'));
+  app.setBaseViewsDir([
+    path.join(__dirname, 'shared/views'),
+    // FIXME: not a fan of module views being declared in a global module
+    path.join(__dirname, 'carbone/reads/views'),
+  ]);
 
   const hbs = create({
     extname: 'hbs',
     defaultLayout: 'layout_main',
-    layoutsDir: path.join(__dirname, '..', 'views', 'layouts'),
-    partialsDir: path.join(__dirname, '..', 'views', 'partials'),
+    layoutsDir: path.join(__dirname, 'shared/views', 'layouts'),
+    partialsDir: path.join(__dirname, 'shared/views', 'partials'),
     helpers: { formatCarboneCatalogueItem },
   });
 
   app.engine('hbs', hbs.engine);
 
-  // FIXME: not a fan of views being declared here, in a global module
   app.setViewEngine('hbs');
 
   await app.listen(3000);
