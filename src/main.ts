@@ -6,7 +6,8 @@ import { CarboneModule } from './carbone/carbone.module';
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(CarboneModule);
 
-  app.setBaseViewsDir(path.join(__dirname, 'views'));
+  // FIXME: not crazy about views being declared here, in a global module
+  app.setBaseViewsDir(path.join(__dirname, 'carbone/reads/views'));
   app.setViewEngine('hbs');
 
   await app.listen(3000);
