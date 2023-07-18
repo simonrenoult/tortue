@@ -1,5 +1,6 @@
-import { Controller, Get, Inject, Render } from '@nestjs/common';
+import { Controller, Get, Inject, Res } from '@nestjs/common';
 import { CarboneRepository } from '../shared/carbone.repository';
+import { Response } from 'express';
 
 @Controller()
 export class CarboneController {
@@ -8,9 +9,8 @@ export class CarboneController {
   ) {}
 
   @Get()
-  @Render('index')
-  async getHello(): Promise<object> {
-    const all = await this.repository.findAll();
-    return { items: all };
+  async anotherLayout(@Res() res: Response) {
+    const items = await this.repository.findAll();
+    return res.render('carbone_catalogue', { items });
   }
 }
