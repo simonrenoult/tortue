@@ -16,3 +16,4 @@
 - [ ] Do some frontend testing
 - [ ] Add Git hooks
 - [ ] Add infra
+- [ ] Add changelog generation
