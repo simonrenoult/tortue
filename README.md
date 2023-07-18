@@ -4,6 +4,7 @@
 
 ## Prerequisites
 
+- Git
 - Node Version Manager
 - EditorConfig
 
@@ -13,3 +14,4 @@
 - [ ] Do some styling
 - [ ] Host somewhere
 - [ ] Do some frontend testing
+- [ ] Add Git hooks
