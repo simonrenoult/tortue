@@ -1,26 +1,27 @@
 import { equal } from 'node:assert';
-import path from 'node:path';
+import * as path from 'node:path';
 import { describe, it } from 'mocha';
-import { InMemoryCarboneRepository } from './in-memory-carbone.repository';
-import { RawCsv } from '../src/types';
-import { Extractor } from '../src/serverside/extractor';
-import { Transformator } from '../src/serverside/transformator';
-import { Loader } from '../src/serverside/loader';
+import { CsvFileExtractor } from '../../src/carbone/writes/csv-file.extractor';
+import { StringToCarboneItemTransformator } from '../../src/carbone/writes/string-to-carbone-item.transformator';
+import { InMemoryCarboneRepository } from '../../src/carbone/shared/in-memory-carbone.repository';
+import { CarboneRepositoryLoader } from '../../src/carbone/writes/carbone-repository.loader';
+import { FeedCarboneRepositoryCommand } from '../../src/carbone/writes/feed-carbone-repository.command';
 
-describe('ETL', () => {
+describe('FeedCarboneRepositoryCommand', () => {
   it('loads csv from fs, transforms it and load it in memory', async () => {
-    const extractor = new Extractor();
-    const rawCsv = extractor.execute(
+    // Given
+    const carboneRepository = new InMemoryCarboneRepository();
+    const command = new FeedCarboneRepositoryCommand(
       path.resolve(__dirname, './carbone_short.csv'),
+      new CsvFileExtractor(),
+      new StringToCarboneItemTransformator(),
+      new CarboneRepositoryLoader(carboneRepository),
     );
 
-    const transformator = new Transformator();
-    const csv = transformator.execute(rawCsv as RawCsv);
+    // When
+    command.onModuleInit();
 
-    const carboneRepository = new InMemoryCarboneRepository();
-    const loader = new Loader(carboneRepository);
-    await loader.execute(csv);
-
+    // Then
     const carboneItems = await carboneRepository.findAll();
     equal(carboneItems.length, 5);
   });
