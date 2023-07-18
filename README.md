@@ -15,3 +15,4 @@
 - [ ] Host somewhere
 - [ ] Do some frontend testing
 - [ ] Add Git hooks
+- [ ] Add infra
