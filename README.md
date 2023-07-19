@@ -11,6 +11,7 @@
 ## TODO
 
 - [ ] Finish comparator
+- [ ] When removing duplicated items, keep the highest impact item instead of the first item found
 - [ ] Do some styling
 - [ ] Host somewhere
 - [ ] Do some frontend testing

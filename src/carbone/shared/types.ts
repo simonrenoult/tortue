@@ -25,7 +25,7 @@ export class CarboneItem {
     return this.localisation === 'France continentale';
   }
 
-  public getUniqueName() {
+  public getKey() {
     return [
       this.type,
       this.name,

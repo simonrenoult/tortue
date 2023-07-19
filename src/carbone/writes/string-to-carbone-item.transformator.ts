@@ -10,11 +10,26 @@ export class StringToCarboneItemTransformator {
       );
 
     const [headers, ...lines]: string[][] = headerAndContent;
+    const keysInList = [];
     return lines
       .map(this.toListOfObjects(headers))
-      .filter(
-        (item) => item.isValid() && item.isElement() && item.isInMetropole(),
-      );
+      .filter(this.cleanUpDataset(keysInList));
+  }
+
+  private cleanUpDataset(keysInList: any[]) {
+    return (item: CarboneItem) => {
+      if (!item.isValid() || !item.isElement() || !item.isInMetropole()) {
+        return false;
+      } else {
+        const keyAlreadyExists = keysInList.includes(item.getKey());
+        if (keyAlreadyExists) {
+          return false;
+        } else {
+          keysInList.push(item.getKey());
+          return true;
+        }
+      }
+    };
   }
 
   private toListOfObjects(headers: string[]) {
