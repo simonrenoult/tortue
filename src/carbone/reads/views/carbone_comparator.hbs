@@ -1,5 +1,5 @@
 <h2>Comparateur de données carbone</h2>
-<form hx-post="/compare" hx-swap="none">
+<form hx-post="/compare" hx-target="#result">
   <label for="elementToCompareA">
     Élément A
     <input name="elementToCompareA" list="catalogue" id="elementToCompareA" width="120">
@@ -10,6 +10,8 @@
   </label>
   <button type="submit">Comparer</button>
 </form>
+
+<div id="result"></div>
 
 <datalist id="catalogue">
   {{#each items}}
