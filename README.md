@@ -12,6 +12,7 @@
 
 - [ ] When removing duplicated items, keep the highest impact item instead of the first item found
 - [ ] Keep only elements measured in coe2?
+- [ ] Display catalogue as a table
 - [ ] Do some styling
 - [ ] Host somewhere
 - [ ] Do some frontend testing
