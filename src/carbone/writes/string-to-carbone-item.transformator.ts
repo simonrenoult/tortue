@@ -13,7 +13,10 @@ export class StringToCarboneItemTransformator {
     const keysInList = [];
     return lines
       .map(this.toListOfObjects(headers))
-      .filter(this.cleanUpDataset(keysInList));
+      .filter(this.cleanUpDataset(keysInList))
+      .sort((itemA: CarboneItem, itemB: CarboneItem) =>
+        itemA.getKey() < itemB.getKey() ? -1 : 1,
+      );
   }
 
   private cleanUpDataset(keysInList: any[]) {
