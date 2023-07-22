@@ -7,8 +7,9 @@ import {
   Req,
   Res,
 } from "@nestjs/common";
-import { CarboneRepository } from "../shared/carbone.repository";
 import { Request, Response } from "express";
+
+import { CarboneRepository } from "../shared/carbone.repository";
 import { CarboneItem } from "../shared/types";
 
 @Controller()

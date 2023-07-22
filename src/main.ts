@@ -1,10 +1,12 @@
-import * as path from "path";
+import * as path from "node:path";
+import * as process from "node:process";
+
 import { NestFactory } from "@nestjs/core";
 import { NestExpressApplication } from "@nestjs/platform-express";
-import { CarboneModule } from "./carbone/carbone.module";
 import { create } from "express-handlebars";
+
+import { CarboneModule } from "./carbone/carbone.module";
 import { example } from "./carbone/reads/handlebars-helpers";
-import * as process from "process";
 
 const port = process.env.PORT || 3000;
 async function bootstrap() {

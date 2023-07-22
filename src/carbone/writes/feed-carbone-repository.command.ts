@@ -1,7 +1,8 @@
 import { OnModuleInit } from "@nestjs/common";
-import { StringToCarboneItemTransformator } from "./string-to-carbone-item.transformator";
-import { CsvFileExtractor, PathIsNotAbsoluteError } from "./csv-file.extractor";
+
 import { CarboneRepositoryLoader } from "./carbone-repository.loader";
+import { CsvFileExtractor, PathIsNotAbsoluteError } from "./csv-file.extractor";
+import { StringToCarboneItemTransformator } from "./string-to-carbone-item.transformator";
 
 export class FeedCarboneRepositoryCommand implements OnModuleInit {
   constructor(

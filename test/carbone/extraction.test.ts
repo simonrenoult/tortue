@@ -2,11 +2,11 @@ import { equal } from "node:assert";
 import * as path from "node:path";
 import { describe, it } from "node:test";
 
-import { CsvFileExtractor } from "../../src/carbone/writes/csv-file.extractor";
-import { StringToCarboneItemTransformator } from "../../src/carbone/writes/string-to-carbone-item.transformator";
 import { InMemoryCarboneRepository } from "../../src/carbone/shared/in-memory-carbone.repository";
 import { CarboneRepositoryLoader } from "../../src/carbone/writes/carbone-repository.loader";
+import { CsvFileExtractor } from "../../src/carbone/writes/csv-file.extractor";
 import { FeedCarboneRepositoryCommand } from "../../src/carbone/writes/feed-carbone-repository.command";
+import { StringToCarboneItemTransformator } from "../../src/carbone/writes/string-to-carbone-item.transformator";
 
 describe("FeedCarboneRepositoryCommand", () => {
   it("extracts, transforms and loads the appropriate number of elements", async () => {

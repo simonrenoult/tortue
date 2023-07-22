@@ -1,13 +1,15 @@
+import { resolve } from "node:path";
+
 import { Module } from "@nestjs/common";
+
 import { CarboneController } from "./reads/carbone.controller";
-import { InMemoryCarboneRepository } from "./shared/in-memory-carbone.repository";
 import { CarboneRepository } from "./shared/carbone.repository";
-import { FeedCarboneRepositoryCommand } from "./writes/feed-carbone-repository.command";
-import { StringToCarboneItemTransformator } from "./writes/string-to-carbone-item.transformator";
-import { resolve } from "path";
-import { CsvFileExtractor } from "./writes/csv-file.extractor";
+import { InMemoryCarboneRepository } from "./shared/in-memory-carbone.repository";
 import { CarboneRepositoryLoader } from "./writes/carbone-repository.loader";
+import { CsvFileExtractor } from "./writes/csv-file.extractor";
+import { FeedCarboneRepositoryCommand } from "./writes/feed-carbone-repository.command";
 import { FindDuplicatesCommand } from "./writes/find-duplicates.command";
+import { StringToCarboneItemTransformator } from "./writes/string-to-carbone-item.transformator";
 
 @Module({
   imports: [],

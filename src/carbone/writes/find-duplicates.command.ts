@@ -1,5 +1,6 @@
-import { CarboneRepository } from "../shared/carbone.repository";
 import { OnModuleInit } from "@nestjs/common";
+
+import { CarboneRepository } from "../shared/carbone.repository";
 
 export class FindDuplicatesCommand implements OnModuleInit {
   constructor(private readonly carboneRepository: CarboneRepository) {}
