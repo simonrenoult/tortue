@@ -4,7 +4,9 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { CarboneModule } from './carbone/carbone.module';
 import { create } from 'express-handlebars';
 import { example } from './carbone/reads/handlebars-helpers';
+import * as process from 'process';
 
+const port = process.env.port || 3000;
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(CarboneModule);
 
@@ -27,6 +29,6 @@ async function bootstrap() {
 
   app.setViewEngine('hbs');
 
-  await app.listen(3000);
+  await app.listen(port);
 }
 bootstrap();
