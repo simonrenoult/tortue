@@ -21,7 +21,12 @@ export class StringToCarboneItemTransformator {
 
   private cleanUpDataset(keysInList: any[]) {
     return (item: CarboneItem) => {
-      if (!item.isValid() || !item.isElement() || !item.isInMetropole()) {
+      if (
+        !item.isValid() ||
+        !item.isElement() ||
+        !item.isInMetropole() ||
+        !item.estUnFacteurDEmission()
+      ) {
         return false;
       } else {
         const keyAlreadyExists = keysInList.includes(item.getKey());
@@ -66,6 +71,7 @@ export class StringToCarboneItemTransformator {
       item["Statut de l'élément"],
       item['Localisation géographique'],
       item['Sous-localisation géographique français'],
+      item[`Type de l'élément`],
       item['Tags français'].toLowerCase().split(','),
     );
   }
