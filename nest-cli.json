@@ -4,7 +4,7 @@
   "sourceRoot": "src",
   "compilerOptions": {
     "deleteOutDir": true,
-    "assets": ["**/*.hbs", "**/*.csv"],
+    "assets": ["**/*.hbs", "**/*.csv", "**/*.ico", "**/*.json", "**/*.jpg"],
     "watchAssets": true,
     "manualRestart": true
   }
