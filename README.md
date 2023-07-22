@@ -37,3 +37,4 @@ $ npm run start:dev
 - [ ] Do some frontend testing
 - [ ] Add Git hooks
 - [ ] Add changelog generation
+- [ ] Passer à EJS (ou autre moteur de template) plus largement maintenu

@@ -1,6 +1,7 @@
 import { equal } from 'node:assert';
 import * as path from 'node:path';
-import { describe, it } from 'mocha';
+import { describe, it } from 'node:test';
+
 import { CsvFileExtractor } from '../../src/carbone/writes/csv-file.extractor';
 import { StringToCarboneItemTransformator } from '../../src/carbone/writes/string-to-carbone-item.transformator';
 import { InMemoryCarboneRepository } from '../../src/carbone/shared/in-memory-carbone.repository';
