@@ -35,6 +35,5 @@ $ npm run start:dev
 - [ ] Make a simpler version of catalogue/comparator based of average of similar elements
 - [ ] Do some styling
 - [ ] Do some frontend testing
-- [ ] Add Git hooks
 - [ ] Add changelog generation
 - [ ] Passer à EJS (ou autre moteur de template) plus largement maintenu
