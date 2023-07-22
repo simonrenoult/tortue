@@ -1,5 +1,5 @@
-import { CarboneRepository } from './carbone.repository';
-import { CarboneItem, Csv } from './types';
+import { CarboneRepository } from "./carbone.repository";
+import { CarboneItem, Csv } from "./types";
 
 export class InMemoryCarboneRepository implements CarboneRepository {
   constructor(private readonly carboneStore: Array<CarboneItem> = []) {}

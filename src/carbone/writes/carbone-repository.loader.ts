@@ -1,5 +1,5 @@
-import { CarboneRepository } from '../shared/carbone.repository';
-import { Csv } from '../shared/types';
+import { CarboneRepository } from "../shared/carbone.repository";
+import { Csv } from "../shared/types";
 
 export class CarboneRepositoryLoader {
   constructor(private readonly carboneRepository: CarboneRepository) {}

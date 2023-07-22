@@ -6,30 +6,30 @@ import {
   Post,
   Req,
   Res,
-} from '@nestjs/common';
-import { CarboneRepository } from '../shared/carbone.repository';
-import { Request, Response } from 'express';
-import { CarboneItem } from '../shared/types';
+} from "@nestjs/common";
+import { CarboneRepository } from "../shared/carbone.repository";
+import { Request, Response } from "express";
+import { CarboneItem } from "../shared/types";
 
 @Controller()
 export class CarboneController {
   constructor(
-    @Inject('CarboneRepository') private readonly repository: CarboneRepository,
+    @Inject("CarboneRepository") private readonly repository: CarboneRepository,
   ) {}
 
   @Get()
   async index(@Res() res: Response) {
     const items = await this.repository.findAll();
-    return res.render('carbone_catalogue', { items });
+    return res.render("carbone_catalogue", { items });
   }
 
-  @Get('/comparator')
+  @Get("/comparator")
   async comparator(@Res() res: Response) {
     const items = await this.repository.findAll();
-    return res.render('carbone_comparator', { items });
+    return res.render("carbone_comparator", { items });
   }
 
-  @Post('/compare')
+  @Post("/compare")
   @HttpCode(200)
   async compare(@Req() req: Request, @Res() res: Response) {
     const { elementToCompareA, elementToCompareB } = req.body;
@@ -37,14 +37,14 @@ export class CarboneController {
     const items = await this.repository.findAll();
     const itemA = items.find((i) => i.name === elementToCompareA);
     if (!itemA) {
-      return res.render('carbone_catalogue_result_not_found_error', {
+      return res.render("carbone_catalogue_result_not_found_error", {
         name: elementToCompareA,
         layout: null,
       });
     }
     const itemB = items.find((i) => i.name === elementToCompareB);
     if (!itemB) {
-      return res.render('carbone_catalogue_result_not_found_error', {
+      return res.render("carbone_catalogue_result_not_found_error", {
         name: elementToCompareB,
         layout: null,
       });
@@ -52,7 +52,7 @@ export class CarboneController {
 
     const comparisonResult = compareItems(itemA, itemB);
 
-    return res.render('carbone_comparator_result', {
+    return res.render("carbone_comparator_result", {
       ...comparisonResult,
       layout: null,
     });

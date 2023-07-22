@@ -1,3 +1,3 @@
 export function example() {
-  throw new Error('Not implemented yet');
+  throw new Error("Not implemented yet");
 }

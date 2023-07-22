@@ -1,7 +1,7 @@
-import { OnModuleInit } from '@nestjs/common';
-import { StringToCarboneItemTransformator } from './string-to-carbone-item.transformator';
-import { CsvFileExtractor, PathIsNotAbsoluteError } from './csv-file.extractor';
-import { CarboneRepositoryLoader } from './carbone-repository.loader';
+import { OnModuleInit } from "@nestjs/common";
+import { StringToCarboneItemTransformator } from "./string-to-carbone-item.transformator";
+import { CsvFileExtractor, PathIsNotAbsoluteError } from "./csv-file.extractor";
+import { CarboneRepositoryLoader } from "./carbone-repository.loader";
 
 export class FeedCarboneRepositoryCommand implements OnModuleInit {
   constructor(
@@ -15,7 +15,7 @@ export class FeedCarboneRepositoryCommand implements OnModuleInit {
       this.pathToCarboneCsv,
     );
     if (extractorResult instanceof PathIsNotAbsoluteError) {
-      throw new Error('Error while loading carbone database');
+      throw new Error("Error while loading carbone database");
     }
 
     const csv = this.stringToCarboneItemTransformator.execute(extractorResult);
@@ -23,10 +23,10 @@ export class FeedCarboneRepositoryCommand implements OnModuleInit {
     this.carboneRepositoryLoader
       .execute(csv)
       .then(() => {
-        console.log('Carbone database loaded');
+        console.log("Carbone database loaded");
       })
       .catch((e) => {
-        console.error('Fail to load carbone database:', e);
+        console.error("Fail to load carbone database:", e);
       });
   }
 }

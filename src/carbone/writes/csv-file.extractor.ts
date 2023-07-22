@@ -1,5 +1,5 @@
-import * as path from 'path';
-import * as fs from 'fs';
+import * as path from "path";
+import * as fs from "fs";
 
 export class PathIsNotAbsoluteError extends Error {
   constructor(actualPath: string) {
@@ -12,6 +12,6 @@ export class CsvFileExtractor {
     if (!path.isAbsolute(pathToFile)) {
       return new PathIsNotAbsoluteError(pathToFile);
     }
-    return fs.readFileSync(pathToFile, { encoding: 'latin1' });
+    return fs.readFileSync(pathToFile, { encoding: "latin1" });
   }
 }

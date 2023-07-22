@@ -18,15 +18,15 @@ export class CarboneItem {
   }
 
   public isValid() {
-    return this.status.startsWith('Valide');
+    return this.status.startsWith("Valide");
   }
 
   public isElement() {
-    return this.typeLigne === 'Elément';
+    return this.typeLigne === "Elément";
   }
 
   public isInMetropole() {
-    return this.localisation === 'France continentale';
+    return this.localisation === "France continentale";
   }
 
   public estUnFacteurDEmission() {
@@ -41,6 +41,6 @@ export class CarboneItem {
       this.status,
       this.localisation,
       this.sousLocalisation,
-    ].join('_');
+    ].join("_");
   }
 }

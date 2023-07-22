@@ -1,4 +1,4 @@
-import { CarboneItem, Csv } from './types';
+import { CarboneItem, Csv } from "./types";
 
 export interface CarboneRepository {
   findAll(): Promise<CarboneItem[]>;
