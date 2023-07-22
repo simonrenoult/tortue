@@ -30,10 +30,10 @@ $ npm run start:dev
 
 ## TODO
 
-- [ ] When removing duplicated items, keep the highest impact item instead of the first item found
-- [ ] Keep only elements measured in coe2?
-- [ ] Make a simpler version of catalogue/comparator based of average of similar elements
-- [ ] Do some styling
-- [ ] Do some frontend testing
-- [ ] Add changelog generation
-- [ ] Passer à EJS (ou autre moteur de template) plus largement maintenu
+- [ ] Feature(catalogue) : When removing duplicated items, keep the highest impact item instead of the first item found
+- [ ] Idea(catalogue) : Keep only elements measured in coe2?
+- [ ] Feature : Make a simpler version of catalogue/comparator based of average of similar elements
+- [ ] Style : améliorer l'UI/UX du catalogue et du comparateur
+- [ ] Test : Do some frontend testing
+- [ ] CI : Ajout de la génération du changelog
+- [ ] Refactor : Passer à EJS (ou autre moteur de template) plus largement maintenu
