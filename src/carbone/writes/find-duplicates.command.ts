@@ -3,7 +3,7 @@ import { OnModuleInit } from '@nestjs/common';
 
 export class FindDuplicatesCommand implements OnModuleInit {
   constructor(private readonly carboneRepository: CarboneRepository) {}
-  onModuleInit(): any {
+  onModuleInit(): void {
     this.carboneRepository.findAll().then((items) => {
       const result = items.reduce((occurrencesPerKey, item) => {
         if (!occurrencesPerKey[item.getKey()]) {

@@ -62,7 +62,7 @@ export class CarboneController {
 function compareItems(
   itemA: CarboneItem,
   itemB: CarboneItem,
-): { worstImpactor: CarboneItem; otherImpactor: CarboneItem } {
+): null | { otherImpactor: CarboneItem; worstImpactor: CarboneItem } {
   return itemA.impact > itemB.impact
     ? { worstImpactor: itemA, otherImpactor: itemB }
     : itemA.impact == itemB.impact

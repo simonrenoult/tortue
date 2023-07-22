@@ -5,12 +5,12 @@ export class StringToCarboneItemTransformator {
     const headerAndContent = rawCsv
       .split('\n')
       .filter((line) => line.length !== 0)
-      .map((line, i) =>
+      .map((line) =>
         line.split(';').map((cell) => cell.replaceAll(`"`, '').trim()),
       );
 
     const [headers, ...lines]: string[][] = headerAndContent;
-    const keysInList = [];
+    const keysInList: string[] = [];
     return lines
       .map(this.toListOfObjects(headers))
       .filter(this.cleanUpDataset(keysInList))
@@ -19,7 +19,7 @@ export class StringToCarboneItemTransformator {
       );
   }
 
-  private cleanUpDataset(keysInList: any[]) {
+  private cleanUpDataset(keysInList: string[]) {
     return (item: CarboneItem) => {
       if (
         !item.isValid() ||
