@@ -36,6 +36,6 @@ class TestContext {
 
   async thenTheRepositoryContainsTheAppropriateNumberOfElements() {
     const carboneItems = await this.carboneRepository.findAll();
-    equal(carboneItems.length, 5);
+    equal(carboneItems.length, 4);
   }
 }
