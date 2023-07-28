@@ -5,12 +5,13 @@ import { NestFactory } from "@nestjs/core";
 import { NestExpressApplication } from "@nestjs/platform-express";
 import { create } from "express-handlebars";
 
-import { CarboneModule } from "./carbone/carbone.module";
 import { example } from "./carbone/reads/handlebars-helpers";
+import { TortueModule } from "./index";
 
 const port = process.env.PORT || 3000;
+
 async function bootstrap() {
-  const app = await NestFactory.create<NestExpressApplication>(CarboneModule);
+  const app = await NestFactory.create<NestExpressApplication>(TortueModule);
 
   app.useStaticAssets(path.join(__dirname, "shared/public"));
   app.setBaseViewsDir([
@@ -33,4 +34,5 @@ async function bootstrap() {
 
   await app.listen(port);
 }
+
 bootstrap();
