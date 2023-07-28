@@ -37,3 +37,6 @@ $ npm run start:dev
 - [ ] Test : Do some frontend testing
 - [ ] CI : Ajout de la génération du changelog
 - [ ] Refactor : Passer à EJS (ou autre moteur de template) plus largement maintenu
+- [ ] CI : Mettre en place GreenFrame pour monitorer l'impact eco
+- [ ] CI : Docker containers pour faciliter le setup
+- [ ] Infra : Utiliser une solution de persistance
