@@ -40,3 +40,6 @@ $ npm run start:dev
 - [ ] CI : Mettre en place GreenFrame pour monitorer l'impact eco
 - [ ] CI : Docker containers pour faciliter le setup
 - [ ] Infra : Utiliser une solution de persistance
+- [ ] Infra : Câbler un ElasticSearch-like (minio ?)
+- [ ] Infra : Câbler une solution de monitoring
+- [ ] Docs : Automatiser le déploiement d'une solution de documentation
