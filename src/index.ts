@@ -2,7 +2,7 @@ import { Module } from "@nestjs/common";
 import { ClsModule } from "nestjs-cls";
 
 import { CarboneModule } from "./carbone";
-import { MiddlewaresModule } from "./shared/middlewares";
+import { InterceptorsModule } from "./shared/interceptors";
 
 @Module({
   imports: [
@@ -10,7 +10,7 @@ import { MiddlewaresModule } from "./shared/middlewares";
       global: true,
       middleware: { mount: true },
     }),
-    MiddlewaresModule,
+    InterceptorsModule,
     CarboneModule,
   ],
 })

@@ -1,9 +1,14 @@
 import { OnModuleInit } from "@nestjs/common";
 
+import { TortueLogger } from "../../shared/logger/logger";
 import { CarboneRepository } from "../shared/carbone.repository";
 
 export class FindDuplicatesCommand implements OnModuleInit {
-  constructor(private readonly carboneRepository: CarboneRepository) {}
+  constructor(
+    private readonly carboneRepository: CarboneRepository,
+    private readonly logger: TortueLogger,
+  ) {}
+
   onModuleInit(): void {
     this.carboneRepository.findAll().then((items) => {
       const result = items.reduce((occurrencesPerKey, item) => {
@@ -24,7 +29,7 @@ export class FindDuplicatesCommand implements OnModuleInit {
         }
       }
 
-      console.log(`Found ${numberOfDuplicates} duplicates`);
+      this.logger.debug(`Found ${numberOfDuplicates} duplicates`);
     });
   }
 }

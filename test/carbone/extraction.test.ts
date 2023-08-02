@@ -7,6 +7,7 @@ import { CarboneRepositoryLoader } from "../../src/carbone/writes/carbone-reposi
 import { CsvFileExtractor } from "../../src/carbone/writes/csv-file.extractor";
 import { FeedCarboneRepositoryCommand } from "../../src/carbone/writes/feed-carbone-repository.command";
 import { StringToCarboneItemTransformator } from "../../src/carbone/writes/string-to-carbone-item.transformator";
+import { TortueLogger } from "../../src/shared/logger/logger";
 
 describe("FeedCarboneRepositoryCommand", () => {
   it("extracts, transforms and loads the appropriate number of elements", async () => {
@@ -17,6 +18,16 @@ describe("FeedCarboneRepositoryCommand", () => {
   });
 });
 
+class VoidLogger implements TortueLogger {
+  debug(): void {}
+
+  error(): void {}
+
+  info(): void {}
+
+  warn(): void {}
+}
+
 class TestContext {
   private command: FeedCarboneRepositoryCommand;
   private carboneRepository: InMemoryCarboneRepository;
@@ -24,6 +35,7 @@ class TestContext {
   givenAProperlyConfiguredCarboneRepositoryFeeder() {
     this.carboneRepository = new InMemoryCarboneRepository();
     this.command = new FeedCarboneRepositoryCommand(
+      new VoidLogger(),
       path.resolve(__dirname, "./carbone_short.csv"),
       new CsvFileExtractor(),
       new StringToCarboneItemTransformator(),

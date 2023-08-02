@@ -43,3 +43,5 @@ $ npm run start:dev
 - [ ] Infra : Câbler un ElasticSearch-like (minio ?)
 - [ ] Infra : Câbler une solution de monitoring
 - [ ] Docs : Automatiser le déploiement d'une solution de documentation
+- [ ] Refactor : Utiliser HTMLX plutôt qu'Handlebars pour retourner le HTML, cela permettra de propager l'utilisation du
+      correlation ID
