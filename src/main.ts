@@ -3,6 +3,7 @@ import * as path from "node:path";
 import { ConfigService } from "@nestjs/config";
 import { NestFactory } from "@nestjs/core";
 import { NestExpressApplication } from "@nestjs/platform-express";
+import * as Sentry from "@sentry/node";
 import { create } from "express-handlebars";
 
 import { example } from "./carbone/reads/handlebars-helpers";
@@ -13,6 +14,7 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(TortueModule);
 
   configureViews(app);
+  configureSentry(app);
 
   const { port } = app.get(ConfigService<Configuration>).get("server");
   await app.listen(port);
@@ -36,6 +38,12 @@ function configureViews(app: NestExpressApplication) {
 
   app.engine("hbs", hbs.engine);
   app.setViewEngine("hbs");
+}
+
+function configureSentry(app: NestExpressApplication) {
+  const { dsn } = app.get(ConfigService<Configuration>).get("sentry");
+  const { release } = app.get(ConfigService<Configuration>).get("sentry");
+  Sentry.init({ dsn, release, tracesSampleRate: 1.0 });
 }
 
 bootstrap();
