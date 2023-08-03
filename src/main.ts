@@ -1,18 +1,24 @@
 import * as path from "node:path";
-import * as process from "node:process";
 
+import { ConfigService } from "@nestjs/config";
 import { NestFactory } from "@nestjs/core";
 import { NestExpressApplication } from "@nestjs/platform-express";
 import { create } from "express-handlebars";
 
 import { example } from "./carbone/reads/handlebars-helpers";
 import { TortueModule } from "./index";
-
-const port = process.env.PORT || 3000;
+import { Configuration } from "./shared/configuration/configuration";
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(TortueModule);
 
+  configureViews(app);
+
+  const { port } = app.get(ConfigService<Configuration>).get("server");
+  await app.listen(port);
+}
+
+function configureViews(app: NestExpressApplication) {
   app.useStaticAssets(path.join(__dirname, "shared/public"));
   app.setBaseViewsDir([
     path.join(__dirname, "shared/views"),
@@ -29,10 +35,7 @@ async function bootstrap() {
   });
 
   app.engine("hbs", hbs.engine);
-
   app.setViewEngine("hbs");
-
-  await app.listen(port);
 }
 
 bootstrap();

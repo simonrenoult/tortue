@@ -1,17 +1,9 @@
 import { Module } from "@nestjs/common";
-import { ClsModule } from "nestjs-cls";
 
 import { CarboneModule } from "./carbone";
-import { InterceptorsModule } from "./shared/interceptors";
+import { SharedModule } from "./shared";
 
 @Module({
-  imports: [
-    ClsModule.forRoot({
-      global: true,
-      middleware: { mount: true },
-    }),
-    InterceptorsModule,
-    CarboneModule,
-  ],
+  imports: [SharedModule, CarboneModule],
 })
 export class TortueModule {}
