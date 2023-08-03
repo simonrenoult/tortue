@@ -1,7 +1,6 @@
 import { Logger } from "@nestjs/common";
-import { ClsService } from "nestjs-cls";
 
-import { Context } from "../context";
+import { ContextService } from "../context";
 
 export interface TortueLogger {
   debug(message: string, args?: object): void;
@@ -16,7 +15,7 @@ export interface TortueLogger {
 export class ImplTortueLogger implements TortueLogger {
   private logger: Logger;
 
-  constructor(private readonly context: ClsService<Context>) {
+  constructor(private readonly context: ContextService) {
     this.logger = new Logger();
   }
 

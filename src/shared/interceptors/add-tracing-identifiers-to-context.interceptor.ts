@@ -1,15 +1,14 @@
 import { CallHandler, ExecutionContext, NestInterceptor } from "@nestjs/common";
 import { Request } from "express";
-import { ClsService } from "nestjs-cls";
 import { Observable } from "rxjs";
 import { ulid } from "ulid";
 
-import { Context } from "../context";
+import { ContextService } from "../context";
 
 export class AddTracingIdentifiersToContextInterceptor
   implements NestInterceptor
 {
-  constructor(private readonly context: ClsService<Context>) {}
+  constructor(private readonly context: ContextService) {}
 
   intercept(context: ExecutionContext, next: CallHandler): Observable<unknown> {
     const req = context.switchToHttp().getRequest<Request>();

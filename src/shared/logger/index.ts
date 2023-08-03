@@ -1,16 +1,17 @@
 import { Module } from "@nestjs/common";
 import { ClsService } from "nestjs-cls";
 
-import { Context } from "../context";
+import { ContextModule, ContextService } from "../context";
 import { ImplTortueLogger } from "./logger";
 
 @Module({
+  imports: [ContextModule],
   providers: [
     {
       provide: "TortueLogger",
       inject: [ClsService],
-      useFactory: (clsService: ClsService<Context>) =>
-        new ImplTortueLogger(clsService),
+      useFactory: (contextService: ContextService) =>
+        new ImplTortueLogger(contextService),
     },
   ],
   exports: ["TortueLogger"],
