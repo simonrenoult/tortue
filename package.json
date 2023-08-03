@@ -14,16 +14,17 @@
     "npm": "9.6.7"
   },
   "scripts": {
-    "build": "nest build && npm run sentry:sourcemaps",
+    "build": "nest build",
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject ./dist && sentry-cli sourcemaps upload ./dist",
+    "build:sentry": "npm run build && npm run sentry:sourcemaps",
     "lint:code": "eslint src test",
     "lint:commit": "commitlint --edit",
     "prestart": "npm run build",
-    "start": "node dist/main.js",
+    "start": "node ./dist/main.js",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "test": "node --require 'ts-node/register' test/**/*.test.ts",
-    "prepare": "husky install",
-    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org octo-technology-at --project tortue ./dist && sentry-cli sourcemaps upload --org octo-technology-at --project tortue ./dist"
+    "prepare": "husky install"
   },
   "dependencies": {
     "@nestjs/cli": "10.1.10",
