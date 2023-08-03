@@ -44,3 +44,4 @@ $ npm run start:dev
 - [ ] Docs : Automatiser le déploiement d'une solution de documentation
 - [ ] Refactor : Utiliser HTMLX plutôt qu'Handlebars pour retourner le HTML, cela permettra de propager l'utilisation du
       correlation ID
+- [ ] Chore : Extraire les dotfiles dans une dossier dotfile afin d'alléger la racine
