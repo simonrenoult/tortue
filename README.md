@@ -28,20 +28,34 @@ $ npm clean-install
 $ npm run start:dev
 ```
 
+## Jouer avec docker
+
+- Construire l'image Docker
+
+```shell
+$ docker build --file infra/Dockerfile . --tag tortue-ap
+```
+
+- Exécuter l'image Docker
+
+```shell
+$ docker run --env port=1337 --publish 1337:1337 --detach tortue-app
+```
+
 ## TODO
 
-- [ ] Feature(catalogue) : When removing duplicated items, keep the highest impact item instead of the first item found
-- [ ] Idea(catalogue) : Keep only elements measured in coe2?
-- [ ] Feature : Make a simpler version of catalogue/comparator based of average of similar elements
-- [ ] Style : améliorer l'UI/UX du catalogue et du comparateur
-- [ ] Test : Do some frontend testing
+- [ ] Feature(catalogue) : Ne conserver que l'élément ayant le pire impact (au lieu du premier) lors de la deduplication
+- [ ] Idea(catalogue) : Ne garder que les éléments mesurer en kCo2
+- [ ] Feature : Introduire une version simplifiée du catalogue/comparateur basée sur la moyenne des éléments similaires
+- [ ] Style : Améliorer l'UI/UX du catalogue et du comparateur
+- [ ] Test : Ajouter des tests frontend
 - [ ] CI : Ajout de la génération du changelog
 - [ ] Refactor : Passer à EJS (ou autre moteur de template) plus largement maintenu
 - [ ] CI : Mettre en place GreenFrame pour monitorer l'impact eco
-- [ ] CI : Docker containers pour faciliter le setup
 - [ ] Infra : Utiliser une solution de persistance
 - [ ] Infra : Câbler un ElasticSearch-like (minio ?)
 - [ ] Docs : Automatiser le déploiement d'une solution de documentation
-- [ ] Refactor : Utiliser HTMLX plutôt qu'Handlebars pour retourner le HTML, cela permettra de propager l'utilisation du
+- [ ] Refactor : Utiliser HTMLX plutôt qu'Hbs pour retourner le HTML, cela permettra de propager l'utilisation du
       correlation ID
 - [ ] Chore : Extraire les dotfiles dans une dossier dotfile afin d'alléger la racine
+- [ ] Infra : Améliorer le Dockerfile via un two-stage Dockerfile

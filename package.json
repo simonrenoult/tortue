@@ -10,8 +10,8 @@
   "private": true,
   "license": "MIT",
   "engines": {
-    "node": "20.3.1",
-    "npm": "9.6.7"
+    "node": "20",
+    "npm": "9"
   },
   "scripts": {
     "build": "nest build",
@@ -24,7 +24,7 @@
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "test": "node --require 'ts-node/register' test/**/*.test.ts",
-    "prepare": "husky install"
+    "setup": "husky install"
   },
   "dependencies": {
     "@nestjs/cli": "10.1.10",
